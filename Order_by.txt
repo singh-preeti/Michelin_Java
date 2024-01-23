@@ -1,0 +1,9 @@
+1. SELECT * FROM Employee WHERE City = "London" ORDER BY Name ASC;
+
+2. SELECT * FROM Employee WHERE City = "London" ORDER BY Name DESC;
+
+3. SELECT Id, Department, Name, Salary, City, Age, Gender
+FROM Employee
+ORDER BY Department DESC, Name ASC;
+
+4. SELECT Name, Department, Gender, City FROM Employee ORDER BY 2 ASC;
