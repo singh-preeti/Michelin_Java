@@ -1,0 +1,88 @@
+Example 1: Count the total number of employees in the employee table
+SELECT COUNT(*) AS TotalEmployee FROM Employee;
+
+Example 2: Count the total number of employees in each department of the employee table
+SELECT Department, COUNT(*) AS TotalEmployee
+FROM Employee 
+GROUP BY Department;
+
+Example 3: Find the total salary given to all employees
+SELECT SUM(Salary) as TotalSalary FROM Employee;
+
+SELECT Department, SUM(Salary) as TotalSalary
+FROM Employee
+GROUP BY Department;
+
+Example 4: Find the Highest salary in Each Department of the Organization
+SELECT Department, MAX(SALARY) as MaxSalary
+FROM Employee
+GROUP BY Department;
+
+
+Example 5: Find the Lowest salary in Each Department
+SELECT Department, MIN(SALARY) as MinSalary
+FROM Employee
+GROUP BY Department;
+
+
+GROUP By Clause with Multiple Columns in MySQL:
+Example 6: Find the number of employees working in each Gender per department
+SELECT Department, Salary, COUNT(*) AS EmployeeCount
+FROM Employee
+GROUP BY Department, Salary
+ORDER BY Department;
+
+Example 7: Find the total salaries and the total number of employees by City, and by gender
+SELECT City, Gender,
+SUM(Salary) as TotalSalary,
+COUNT(ID) as TotalEmployees
+FROM Employee
+GROUP BY CITY, Gender;
+
+Example 8: Find the average salary of each department
+SELECT Department, AVG(Salary) as AverageSalary
+FROM Employee
+GROUP BY Department;
+
+Example 9: Having Clause
+SELECT City, SUM(Salary) as TotalSalary
+FROM Employee
+WHERE City = "London"
+GROUP BY City;
+
+
+SELECT City, SUM(Salary) as TotalSalary
+FROM Employee
+GROUP BY City
+HAVING City = "London";
+
+
+
+SELECT CITY, SUM(Salary) AS Total_Salary
+FROM Employee
+GROUP BY Department
+HAVING SUM(Salary) > 170000;
+
+
+SELECT Department, COUNT(*) AS 'Number of employees'
+FROM Employee
+GROUP BY Department
+HAVING COUNT(*) > 5;
+
+
+SELECT Department, AVG(Salary) AS 'Average salary'
+FROM Employee
+GROUP BY Department
+HAVING AVG(Salary) > 50000;
+
+
+
+
+
+WHERE clause in MySQL cannot be used with aggregate functions whereas HAVING clause can be used with aggregate functions. That means the WHERE clause in MySQL is used for filtering individual rows on a table whereas the HAVING clause in MySQL is used to filtering the groups which are created by the Group by Clause.
+The WHERE comes before the GROUP BY clause. That means the WHERE clause filters rows before aggregate calculations are performed. On the other hand, the HAVING clause comes after GROUP by Clause. That means the HAVING clause filters rows after aggregate calculations are performed. So, from a performance standpoint, the HAVING Clause is slower than the WHERE Clause and should be avoided if possible.
+WHERE and HAVING clauses can be used together in a single SELECT statement. In that case, the WHERE clause is applied first to filter individual rows. The rows are then grouped and aggregate calculations are performed, and then only the HAVING clause filters the groups in MySQL. 
+The MySQL WHERE clause can be used with Select, Insert, and Update statements whereas the HAVING clause can only be used with the Select statement.
+We can use the Where clause without using the Group by Clause but we can not use the Having Clause without using the Group by Clause in MySQL.
+
+
