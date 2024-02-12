@@ -10,3 +10,7 @@ Create INDEX class On student(class);
 create Index lastname on student(lastname);
 
 show Indexes from student;
+
+
+--------------------------------------------Devops concepts---------------------------------------------
+https://orangematter.solarwinds.com/2022/03/21/what-is-devops/
